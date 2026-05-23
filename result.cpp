@@ -1,50 +1,59 @@
 #include <iostream>
 using namespace std;
 
-// Function
-void result()
+// Function to calculate and display result
+void studentResult()
 {
-    string name;
-    int m1, m2, m3, total;
+    string name;          // variable for student name
+    int marks[3];         // array for 3 subjects
+    int total = 0;
     float average;
 
+    // Input
     cout << "Enter student name: ";
     cin >> name;
 
-    cout << "Enter mark 1: ";
-    cin >> m1;
+    // Loop to enter 3 marks
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "Enter mark for subject " << i + 1 << ": ";
+        cin >> marks[i];
 
-    cout << "Enter mark 2: ";
-    cin >> m2;
+        total = total + marks[i]; // calculation
+    }
 
-    cout << "Enter mark 3: ";
-    cin >> m3;
-
-    total = m1 + m2 + m3;
+    // Calculate average
     average = total / 3.0;
 
-    cout << "\nName: " << name << endl;
-    cout << "Total: " << total << endl;
+    // Output
+    cout << "\nStudent Name: " << name << endl;
+    cout << "Total Marks: " << total << endl;
     cout << "Average: " << average << endl;
 
+    // Conditional statement
     if (average >= 50)
-        cout << "Passed\n";
+    {
+        cout << "Status: Passed" << endl;
+    }
     else
-        cout << "Failed\n";
+    {
+        cout << "Status: Failed" << endl;
+    }
 }
 
 int main()
 {
     char choice;
 
+    // Loop for multiple students
     do
     {
-        result();
+        studentResult();
 
         cout << "\nEnter another student? (y/n): ";
         cin >> choice;
 
-    } while (choice == 'y');
+    } while (choice == 'y' || choice == 'Y');
 
     return 0;
 }
